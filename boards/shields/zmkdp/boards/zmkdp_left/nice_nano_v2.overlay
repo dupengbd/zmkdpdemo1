@@ -108,79 +108,29 @@
     chosen {
         zmk,underglow = &led_strip;
     };
-};
-// ===== 高密度OLED布局配置（修正版） =====
-/ {
-    // 先定义显示组件的样式和字体
-    display_group {
-        compatible = "zmk,display-group";
-        display = <&oled>;
-        
-        // 删除下面这行！ZMK不支持LVGL字体名
-        // font = <&lv_font_montserrat_8>;
-    };
-    
-    // 定义各个Widget
+};/ {
     widgets {
         compatible = "zmk,display-widgets";
         
-        // 【第1行】层状态 + 电池
         layer_status: layer_status {
             compatible = "zmk,display-widget-layer";
             x = <0>;
             y = <0>;
-            width = <3>;
+            width = <4>;
             height = <1>;
         };
         
         battery_status: battery_status {
             compatible = "zmk,display-widget-battery";
-            x = <5>;
+            x = <6>;
             y = <0>;
-            width = <6>;
-            height = <1>;
-        };
-        
-        // 【第2行】输出状态 + WPM
-        output_status: output_status {
-            compatible = "zmk,display-widget-output";
-            x = <0>;
-            y = <1>;
-            width = <4>;
-            height = <1>;
-        };
-        
-        wpm_status: wpm_status {
-            compatible = "zmk,display-widget-wpm";
-            x = <5>;
-            y = <1>;
-            width = <6>;
-            height = <1>;
-        };
-        
-        // 【第3行】编码器
-        encoder_status: encoder_status {
-            compatible = "zmk,display-widget-encoder";
-            x = <0>;
-            y = <2>;
             width = <8>;
-            height = <1>;
-        };
-        
-        // 【第4行】连接状态
-        connection_status: connection_status {
-            compatible = "zmk,display-widget-connection";
-            x = <0>;
-            y = <3>;
-            width = <14>;
             height = <1>;
         };
     };
 };
 
-// 将Widget列表关联到OLED
 &oled {
     status = "okay";
-    widgets = <&layer_status &battery_status &output_status 
-               &wpm_status &encoder_status &connection_status>;
+    widgets = <&layer_status &battery_status>;
 };
