@@ -108,7 +108,9 @@
     chosen {
         zmk,underglow = &led_strip;
     };
-};/ {
+};
+// ===== OLED高密度布局（极简测试版） =====
+/ {
     widgets {
         compatible = "zmk,display-widgets";
         
@@ -130,7 +132,7 @@
     };
 };
 
+// 注意：这里只需要保持OLED启用，不需要指定widgets
 &oled {
     status = "okay";
-    widgets = <&layer_status &battery_status>;
 };
