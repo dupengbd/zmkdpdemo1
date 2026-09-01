@@ -24,13 +24,13 @@
     };
 };
 &i2c0 {
-    compatible = "nordic,nrf-twim";
+    //compatible = "nordic,nrf-twim";
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
-    clock-frequency = <I2C_BITRATE_FAST>;
-   // clock-frequency = <I2C_BITRATE_STANDARD>;把 I2C 从 400kHz 降到 100kHz
+    // clock-frequency = <I2C_BITRATE_FAST>;把 I2C 从 400kHz 降到 100kHz
+    clock-frequency = <I2C_BITRATE_STANDARD>;
 };
 
 // devices on i2c0
